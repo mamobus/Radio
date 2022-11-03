@@ -1,3 +1,31 @@
-void loop() {
-	
+#define MIC_BUFF_SIZE 777
+#define PACKED_DATA_SIZE 777
+typedef char data_type;
+
+struct packed_sound_t 
+{
+    data_type freq[PACKED_DATA_SIZE];
+    data_type phas[PACKED_DATA_SIZE];
+    data_type ampl[PACKED_DATA_SIZE];
+} 
+
+typedef sruct packed_sound_t packed_sound_t;
+
+void setup
+{
+    data_type mic_buff  [MIC_BUFF_SIZE];
+    data_type phone_buff  [MIC_BUFF_SIZE];
+    data_type sound_buff[MIC_BUFF_SIZE];
+    packed_sound_t codec
+}
+
+void loop() 
+{
+     copy_from_mic_buff(sound_buff, mic_buff);
+    pack_sound(&codec, sound_buff);
+    send_packed(&codec);
+
+    get_packed(&codec);
+    unpack_sound(&codec, sound_buff);
+    send_to_headphones(sound_buf, phone_buff);
 }
